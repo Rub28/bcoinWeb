@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> BitCoin Administrador </title> 
+    <title> BitCoin </title>
+    <link rel="stylesheet" href="./css/general.css"> 
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="shortcut icon" href="./img/bitcoin1.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link href="./css/styles/ag-grid.css" rel="stylesheet">
+    <link href="./css/styles/ag-theme-alpine.css" rel="stylesheet">
+    <link href="./css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+    <style>
+      .autocomplete-items {
+          border: 1px solid #d4d4d4;
+          max-height: 200px;
+          overflow-y: auto;
+          position: absolute;
+          z-index: 99;
+          width: 93%;
+          background-color: white;
+      }
+      .autocomplete-items div {
+          padding: 10px;
+          cursor: pointer;
+      }
+      .autocomplete-items div:hover {
+          background-color: #e9e9e9;
+      }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+        <div class="nav__logo">
+            <h2 class="nav__title"id="user-sesion">B coin </h2>
+        </div>
+
+        <ul class="nav__link nav__link--menu">
+            <li class="nav__items">
+                <a href="principalAdmin.html" class="nav__links">Inicio</a>
+            </li>
+            <li class="nav__items">
+                <a href="Usuarios.html" class="nav__links" > Usuarios </a>
+            </li>
+            <li class="nav__items">
+                <a href="Cliente.html" class="nav__links" id="" >  Clientes </a>
+            </li>
+            <li class="nav__items">
+                <a href="Movimientos.html" class="nav__links" id=""> Movimientos </a>
+            </li> 
+            <li class="nav__items">
+                <a href="#" class="nav__links" id="openModal-operativa"> Operativa</a>
+            </li>
+            <li class="nav__items">               
+                <a href="#" class="nav__links" onclick="cerarSession()"> Salir</a>
+            </li>
+            <img src="./img/close.svg" class="nav__close">
+        </ul>
+
+        <div class="nav__menu">
+            <img src="./img/menu.svg" class="nav__img">
+        </div>
+    </nav> 
+</header>
+    
+    <!--<script src="./js/modal.js"></script>-->
+    <script src="./js/jquery-3.7.1.js"></script>
+    <script src="./js/jquery-migrate-3.5.2.js"></script>
+    <script src="./js/dist/ag-grid-community.min.noStyle.js"></script>
+    <script src="./js/Movimientos.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/bootstrap-datepicker.min.js"></script>
+    <script src="./js/common.js"></script>
+
+    <script>           
+        // Recuperar dato de sesión
+        const userData = JSON.parse(sessionStorage.getItem('userData'));
+        console.log(" En pantalla de principal User "); 
+        console.log(userData.usuario);
+            // Mostrar en HTML
+            if (userData) {
+              document.getElementById('user-sesion').textContent = `Rol Usuario: ${userData.roluser}|${userData.usuario}`;
+            } else {
+              document.getElementById('user-sesion').textContent = 'B Coin usuario no identificado. ';
+            }
+    </script>
+</body>
+</html>

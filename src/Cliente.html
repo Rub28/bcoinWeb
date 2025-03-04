@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bcoin Clientes </title>
+  <title> Bcoin </title>
+  <link rel="stylesheet" href="src/css/general.css">
+  <link rel="stylesheet" href="src/css/estilos.css">
+  <link rel="shortcut icon" href="src/img/bitcoin1.png" type="image/x-icon">
+  <link rel="stylesheet" href="src/css/bootstrap.min.css">
+  <link href="src/css/styles/ag-grid.css" rel="stylesheet">
+  <link href="src/css/styles/ag-theme-alpine.css" rel="stylesheet">
+</head>
+
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="nav__logo">
+        <h2 class="nav__title" id="user-sesion">B coin </h2>
+      </div>
+
+      <ul class="nav__link nav__link--menu">
+        <li class="nav__items">
+          <a href="principalAdmin.html" class="nav__links">Inicio</a>
+        </li>
+        <li class="nav__items">
+          <a href="Usuarios.html" class="nav__links"> Usuarios </a>
+        </li>
+        <li class="nav__items">
+          <a href="Cliente.html" class="nav__links" id=""> Clientes </a>
+        </li>
+        <li class="nav__items">
+          <a href="Movimientos.html" class="nav__links" id=""> Movimientos </a>
+        </li>
+        <li class="nav__items">
+          <a href="#" class="nav__links" id="openModal-operativa"> Operativa</a>
+        </li>
+        <li class="nav__items">
+          <a href="#" class="nav__links" onclick="cerarSession()"> Salir</a>
+        </li>
+        <img src="src/img/close.svg" class="nav__close">
+      </ul>
+
+      <div class="nav__menu">
+        <img src="src/img/menu.svg" class="nav__img">
+      </div>
+    </nav>
+  </header>
+  <div id="myModal-clientes" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Usuario</h5>
+          <button type="button" class="btn-close" id="modalclose" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="row g-3 needs-validation" novalidate id="myFormNuevoCliente">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="nom_cliente">Nombre cliente</label>
+              <input type="text" class="form-control" id="nom_cliente" placeholder="Nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="rfc">RFC</label>
+              <input type="text" class="form-control" id="rfc" placeholder="rfc" required>
+            </div>
+            <div class="form-group">
+              <label for="direccion">Direccion</label>
+              <textarea type="text" class="form-control" id="direccion" placeholder="direccion" required rows="3"
+                style="resize: none;"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email"
+                required>
+            </div>
+            <div class="form-group">
+              <label for="phone_number">Telefono</label>
+              <input type="number" class="form-control" id="phone_number" placeholder="Telefono" required>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" id="btnGuardarCliente" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Clientes</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6 col-sm-3" style="margin-top: 30px;">
+            <button id="btnNuevoCliente" class="btn btn-primary">nuevo cliente</button>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="form-group">
+              <label class="form-label" for="TipoEstatus">Estatus</label>
+              <select class="form-control" id="TipoEstatus" required>
+
+                <option value="A">Activo</option>
+                <option value="B">Baja</option>
+
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+
+            <div id="tblClientes" style="height: 500px; width: 100%;" class="ag-theme-balham"></div>
+            <!--<div style="padding: 4px;">
+                            <b>Número de registros</b> <span id="rowCount"></span>
+                        </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<script src="./js/modal.js"></script>-->
+  <script src="src/js/jquery-3.7.1.js"></script>
+  <script src="src/js/jquery-migrate-3.5.2.js"></script>
+  <script src="src/js/dist/ag-grid-community.min.noStyle.js"></script>
+  <script src="src/js/Clientes.js"></script>
+  <script src="src/js/bootstrap.bundle.min.js"></script>
+  <script src="src/js/common.js"></script>
+  <script>           
+    // Recuperar dato de sesión
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
+    console.log(" En pantalla de principal User "); 
+    console.log(userData.usuario);
+        // Mostrar en HTML
+        if (userData) {
+          document.getElementById('user-sesion').textContent = `Usuario: ${userData.roluser}|${userData.usuario}`;
+        } else {
+          document.getElementById('user-sesion').textContent = 'B Coin usuario no identificado. ';
+        }
+</script>
+
+</body>
+
+</html>

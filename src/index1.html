@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <P2>  Prueba </P2>  
+
+        <div> 
+        <button id="b-valida">  Prueba </button>
+
+        </div>
+
+        <script  >  
+
+
+        const url = 'http://localhost:4000/api/auth/login';
+
+            // Datos a enviar 
+                    const bodyJson = {
+                        user_name: "Richar",
+                        user_password: "123richar"
+                    };
+
+            console.log(bodyJson); 
+
+            const response =  fetch(url, {
+                    mode: 'no-cors', 
+                    method: 'post', 
+                    body: JSON.stringify(bodyJson),
+                    headers: {'Content-Type': 'application/json'}
+            });
+            const data =  response.json();
+
+            console.log(data);
+
+        </script> 
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bcoin Movimientos </title>
+  <title> Bcoin </title>
+  <link rel="stylesheet" href="./css/general.css">
+  <link rel="stylesheet" href="./css/estilos.css">
+  <link rel="shortcut icon" href="./img/bitcoin1.png" type="image/x-icon">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link href="./css/styles/ag-grid.css" rel="stylesheet">
+  <link href="./css/styles/ag-theme-alpine.css" rel="stylesheet">
+  <link href="./css/bootstrap-datepicker.min.css" rel="stylesheet">
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="nav__logo">
+        <h2 class="nav__title" id="user-sesion">B coin </h2>
+      </div>
+
+      <ul class="nav__link nav__link--menu">
+        <li class="nav__items">
+          <a href="principalAdmin.html" class="nav__links">Inicio</a>
+        </li>
+        <li class="nav__items">
+          <a href="Usuarios.html" class="nav__links"> Usuarios </a>
+        </li>
+        <li class="nav__items">
+          <a href="Cliente.html" class="nav__links" id=""> Clientes </a>
+        </li>
+        <li class="nav__items">
+          <a href="Movimientos.html" class="nav__links" id=""> Movimientos </a>
+        </li>
+        <li class="nav__items">
+          <a href="#" class="nav__links" id="openModal-operativa"> Operativa</a>
+        </li>
+        <li class="nav__items">
+          <a href="#" class="nav__links" onclick="cerarSession()"> Salir</a>
+        </li>
+        <img src="./img/close.svg" class="nav__close">
+      </ul>
+
+      <div class="nav__menu">
+        <img src="./img/menu.svg" class="nav__img">
+      </div>
+    </nav>
+  </header>
+  <div id="myModal-movimientos" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"> Movimientos</h5>
+          <button type="button" class="btn-close" id="modalclose" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form class="row g-3 needs-validation" novalidate id="myFormNuevoMovimiento">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="nombre_cliente">Cliente</label>
+              <input type="text" class="form-control" id="nombre_cliente" placeholder="" required autocomplete="off">
+              <div id="autocomplete-suggestions" class="autocomplete-items"></div>             
+            </div>
+
+            <div class="form-group">
+              <label for="num_hit"  >Nùmero de Hit:  </label>
+              <input type="text" class="form-control" id="num_hit" placeholder="Numero de Hit"  disabled>
+                
+            </div>
+
+            <div class="form-group">
+              <label for="monto_entrada">Monto entrada</label>
+              <input type="number" class="form-control" id="monto_entrada" placeholder="Monto entrada"  required>
+            </div>
+
+            <div class="form-group">
+              <label for="num_round"> Monto Roud  </label>
+              <input type="number" class="form-control" id="num_round" name="num_round" placeholder="0.00" disabled >
+            </div>
+
+            <div class="form-group">
+              <label for="valor_bcoin"> Valor Bcoin </label>
+              <input type="number"  step="any" class="form-control" id="valor_bcoin" name="valor_bcoin" placeholder="0.00" required>
+            </div>
+            <div class="form-group">
+              <label for="precio_inicial"> Precio Incial </label>
+              <input type="number" class="form-control" id="precio_inicial" name="precio_inicial" placeholder="0.00"
+                required>
+            </div>
+            
+            <div class="form-group">
+              <label for="fecha_entrada"> Fecha entrada </label>
+              <input id="fecha_entrada" class="form-control js-datepicker" data-date-format="yyyy-mm-dd"
+                data-provide="datepicker" placeholder="YYYY-MM-DD" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+              <label for="monto_salida"> Monto Salida </label>
+              <input type="number" class="form-control" id="monto_salida" name="monto_salida" placeholder="0.00" >
+            </div>
+
+            <div class="form-group">
+              <label for="precio_final"> Precio Final </label>
+              <input type="number" class="form-control" id="precio_final" name="precio_final" placeholder="0.00" >
+            </div>            
+            <div class="form-group">
+              <label for="fecha_salida"> Fecha retiro </label>
+              <input id="fecha_salida" class="form-control js-datepicker" data-date-format="yyyy-mm-dd"
+                data-provide="datepicker" placeholder="YYYY-MM-DD" autocomplete="off" />
+            </div>
+            <div class="form-group">
+              <label for="notas"> Notas </label>
+              <textarea id="notas" name="notas" class="form-control" rows="3" style="resize: none;"
+                autocomplete="off"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="btnGuardarMovimiento" class="btn btn-primary">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title">Movimientos</h5>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-6 col-sm-3" style="margin-top: 30px;">
+            <button id="btnNuevoMovimiento" class="btn btn-primary">nuevo movimiento</button>
+          </div>
+          <div class="col-6 col-sm-3">
+            <div class="form-group">
+              <label class="form-label" for="TipoEstatus">Estatus</label>
+              <select class="form-control" id="TipoEstatus">
+                <option value="A">Activo</option>
+                <option value="B">Baja</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+
+            <div id="tblMovimientos" style="height: 500px; width: 100%;" class="ag-theme-balham"></div>
+            <!--<div style="padding: 4px;">
+                            <b>Número de registros</b> <span id="rowCount"></span>
+                        </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<script src="./js/modal.js"></script>-->
+  <script src="./js/jquery-3.7.1.js"></script>
+  <script src="./js/jquery-migrate-3.5.2.js"></script>
+  <script src="./js/dist/ag-grid-community.min.noStyle.js"></script>
+  <script src="./js/Movimientos.js"></script>
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/bootstrap-datepicker.min.js"></script>
+  <script src="./js/common.js"></script>
+
+<script>           
+    // Recuperar dato de sesión
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
+    console.log(" En pantalla de principal User "); 
+    console.log(userData.usuario);
+        // Mostrar en HTML
+        if (userData) {
+          document.getElementById('user-sesion').textContent = `Usuario: ${userData.roluser}|${userData.usuario}`;
+        } else {
+          document.getElementById('user-sesion').textContent = 'B Coin usuario no identificado. ';
+        }
+</script> 
+
+</body>
+
+</html>

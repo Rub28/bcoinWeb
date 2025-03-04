@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>BitCoin RS </title> 
+
+    <title> Bcoin  |  rub </title>
+    <link rel="stylesheet" href="./css/general.css"> 
+    <link rel="shortcut icon" href="./img/bitcoin1.png" type="image/x-icon">
+   <!--  <link rel="stylesheet" href="./css/normalize.css"> 
+    -->    
+    <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="./css/master.css">
+
+
+</head>
+<body> 
+    <header class="hero">
+      
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h3 class="nav__title" id="nombre-usuario">B coin </h3>
+            </div>
+
+            <ul class="nav__link nav__link--menu">         
+                <li class="nav__items">
+                    <a href="#" class="nav__links" id="openModal-movimientos"> Movimientos </a>
+                </li> 
+             
+                <img src="./img/close.svg" class="nav__close">  
+
+                <li class="nav__items">               
+                    <a href="#" class="nav__links" onclick="cerarSession()"> Salir</a>
+                </li>
+            </ul>
+            <div class="nav__menu">
+                <img src="./img/menu.svg" class="nav__img">
+            </div>
+        </nav> 
+     
+        <script src="https://widgets.coingecko.com/gecko-coin-price-chart-widget.js"></script>
+        <gecko-coin-price-chart-widget locale="es" dark-mode="true" outlined="true" initial-currency="mxn" width="1415" height="10" ></gecko-coin-price-chart-widget>
+    
+        <div id="product-list"  class="product-list" >         </div>   
+
+      
+    </header>
+    
+
+ 
+    <section  > 
+        <h3>   Total: $ <span id="movs-total"> 0 </span> </h3> 
+    </section>  
+    <!-- El modal 
+    <div id="myModal-movimientos" class="modal">
+        <div class="modal-content">
+            <span id="closeModal-movimientos" class="close">&times;</span>
+            <p> Movimientos </p> 
+
+            <form id="register-user">
+                <label for="name">id Cliente </label>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" required>
+                <div class="amount-input">
+                    <label for="amount">Monto Roud: </label>
+                    <input type="text" class="amount" id="monto_entrada" name="monto_entrada" placeholder="0.00" required>
+                </div>
+                <div class="amount-input">
+                    <label for="amount"> Valor Bcoin </label>
+                    <input type="text" class="amount" id="fist_name" name="firs_name" placeholder="0.00" required> 
+                </div>
+                <div class="amount-input">
+                    <label for="amount"> Precio Incial </label>
+                    <input type="text" class="amount" id="precio_inicial" name="precio_inicial" placeholder="0.00" required> 
+                </div> 
+                <div class="amount-input">
+                <label for="amount"> Precio Final </label>
+                <input type="text" class="amount" id="precio_final" name="precio_final" placeholder="0.00"  > 
+                </div>
+                <div class="amount-input">
+                    <label for="amount"> Monto Roud (retiro) </label>
+                    <input type="text" class="amount" id="monto_salida" name="monto_salida" placeholder="0.00"  > 
+                </div>
+                
+                <div class="date-picker">
+                    <label for="date">Fecha Registro :</label>
+                    <input type="date" id="fecha_entrada" name="fecha_entrada">
+                </div>  
+                <div class="date-picker">
+                    <label for="date">Fecha Retiro :</label>
+                    <input type="date" id="fecha_salida" name="fecha_salida">
+                </div>              
+                
+                <div class="amount-input">
+                    <label for="name"> Utilidad/ Perdidad </label>
+                    <input type="text" class="amount" id="utilidad_perdida" name="utilidad_perdida" placeholder="0.00" >  
+                </div>
+                <div>
+                    <label for="name"> Estatus Movimiento </label>
+                    <input type="text" id="estatus" name="estatus" required>  
+                </div>             
+                <p></p>
+                <button type="submit">Registrar</button>
+            </form>
+
+        </div>
+    </div> 
+    --> 
+
+    <script src="./js/movcliente.js"></script>
+    <script src="./js/common.js"></script> 
+
+    <section> 
+        <script src="https://widgets.coingecko.com/gecko-coin-converter-widget.js"></script>
+        <gecko-coin-converter-widget locale="es" outlined="true" initial-currency="mxn" width="1000" height="10"></gecko-coin-converter-widget>    
+    </section>
+
+    <script>           
+        // Recuperar dato de sesión
+        const userData = JSON.parse(sessionStorage.getItem('userData'));
+        console.log(" En pantalla de principal User "); 
+        console.log(userData.usuario);
+            // Mostrar en HTML
+            if (userData) {
+              document.getElementById('nombre-usuario').textContent = `BitCoin RapidoSeguro: ${userData.usuario}`;
+            } else {
+              document.getElementById('nombre-usuario').textContent = 'B Coin usuario no identificado. ';
+            }
+    </script>
+
+</body>
+</html>
