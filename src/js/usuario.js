@@ -11,9 +11,9 @@ mainWindow = new BrowserWindow({webPreferences: {
 // async function validaUser(usuario, password) {  
 async function validaUser() {  
     // URL de la API
-   // const url = 'http://localhost:4000/api/auth/login'; 
-   const url = 'http://ns2.dns-parking.com:4000/api/auth/login'
-
+   // const url = 'http://localhost:4000/api/auth/login'; srv743626.hstgr.cloud
+   // const url = 'http://ns2.dns-parking.com:4000/api/auth/login'
+     const url = 'http://srv743626.hstgr.cloud:4000/api/auth/login'  
     // Datos a enviar 
               const bodyJson = {
                 user_name: "Richar",
