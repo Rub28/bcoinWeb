@@ -135,7 +135,7 @@ formulario.addEventListener('submit', async function(e) {
       user_password: password
     };
      
-    fetch('http://srv743626.hstgr.cloud:4000/api/auth/login', { 
+    fetch('http://srv743626.hstgr.cloud:4000/api/auth/login', {   
   //  fetch('http://localhost:4000/api/auth/login', {
       method: 'POST',
       headers: {
