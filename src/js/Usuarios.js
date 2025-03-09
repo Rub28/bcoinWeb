@@ -124,7 +124,7 @@ function verificarToken(req, res, next) {
 function loadDataFromApi() {
     let estatus = $("#TipoEstatus").val();
 
-    fetch(`http://localhost:4000/api/usuarios?id_agente=${usuarioObj.id}&roluser=${usuarioObj.roluser}&estatus=${estatus}`, {
+    fetch(`http://srv743626.hstgr.cloud:4000/api/usuarios?id_agente=${usuarioObj.id}&roluser=${usuarioObj.roluser}&estatus=${estatus}`, {
         method: 'GET',
         headers: {
             'Authorization': token.replace(/"/g, ''),  // Incluimos el token en la cabecera de autorización
@@ -157,7 +157,7 @@ function AgregarUsuario() {
     };
     // Realizamos la solicitud POST
  
-    fetch('http://localhost:4000/api/Usuarios', {
+    fetch('http://srv743626.hstgr.cloud:4000/api/Usuarios', {
         method: 'POST', // Método HTTP
         headers: {
             'Content-Type': 'application/json', // Tipo de contenido,
@@ -188,7 +188,7 @@ function validaUsuario() {
         email: $("#email").val(),
     };
 
-    fetch(`http://localhost:4000/api/usuarios/validaUsuario`, {
+    fetch(`http://srv743626.hstgr.cloud:4000/api/usuarios/validaUsuario`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -241,7 +241,7 @@ function ConfirmarBaja(idUsuario) {
             id: idUsuario
         };
 
-        fetch('http://localhost:4000/api/Usuarios', {
+        fetch('http://srv743626.hstgr.cloud:4000/api/Usuarios', {
             method: 'PUT', // Método HTTP
             headers: {
                 'Content-Type': 'application/json',
@@ -275,7 +275,7 @@ document.getElementById('nombre_cliente').addEventListener('input', function () 
 
 function fetchSuggestions(query) {
     // Asegúrate de reemplazar esta URL con la URL de tu API de autocompletado
-    const url = `http://localhost:4000/api/clientes/autocomplete?query=${query}&id_agente=${usuarioObj.id}&roluser=${usuarioObj.roluser}`;
+    const url = `http://srv743626.hstgr.cloud:4000/api/clientes/autocomplete?query=${query}&id_agente=${usuarioObj.id}&roluser=${usuarioObj.roluser}`;
 
     fetch(url)
         .then(response => response.json())
@@ -376,4 +376,4 @@ $(function () {
                 }, false)
             })
                 */
-})
+}) 

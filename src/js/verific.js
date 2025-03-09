@@ -29,14 +29,20 @@ const mensaje = document.querySelector('#mensaje')
 
 
 formulario.addEventListener('submit', async function(e) { 
-   e.preventDefault()
- 
+
+
+   
+   e.preventDefault() 
+
+    Login();  
+
+/*  
    const password  =  document.querySelector('#password').value    
    const usuario     = document.querySelector('#usuario').value
    let roluser;  
 
    //const  data = validaUser(usuario, password);   
-   const url = 'http://localhost:4000/api/auth/login';
+   const url = 'http://srv743626.hstgr.cloud:4000/api/auth/login';
           
             const bodyjson = { 
                   user_name: usuario,
@@ -76,7 +82,7 @@ formulario.addEventListener('submit', async function(e) {
                   return; 
                    
                 }
-                
+8                
             
              if (roluser === 0  || roluser ==='' )  { 
                   mensaje.textContent = 'Usuario NO valido, Verifiquelo con el Administrador.';  
@@ -92,6 +98,7 @@ formulario.addEventListener('submit', async function(e) {
             if ( roluser ===  'CLIENTE' )  {  
                  window.location.href = 'principalUser.html'                                          
             }     
+*/ 
 
  }); 
 
@@ -100,8 +107,8 @@ formulario.addEventListener('submit', async function(e) {
   };  
 
  async function validaUser() {  
-      // URL de la API
-      const url = 'http://localhost:4000/api/auth/login';
+      // URL de la API 
+      const url = 'http://srv743626.hstgr.cloud:4000/api/auth/login';
 
       console.log(body); 
   
@@ -115,8 +122,64 @@ formulario.addEventListener('submit', async function(e) {
   
       console.log(data);
       return (data); 
-  
+
    } ;
 
 
-
+   function Login() {
+    const password = document.querySelector('#password').value
+    const usuario = document.querySelector('#usuario').value
+    let roluser;
+    const bodyjson = {
+      user_name: usuario,
+      user_password: password
+    };
+     
+    fetch('http://srv743626.hstgr.cloud:4000/api/auth/login', { 
+  //  fetch('http://localhost:4000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'       
+      },
+      body: JSON.stringify(bodyjson) // Convertimos los datos en formato JSON   
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Datos obtenidos desde la API:', data.body);
+  
+      const sesion = jwt_decode(data.body);
+      console.log("jwt_decode", jwt_decode(data.body))
+  
+      console.log("data.body", data.body)
+  
+      roluser = sesion.rol_user;
+      const sesionUser = {
+        id: sesion.id,
+        usuario: sesion.user_name,
+        roluser: roluser,
+        id_cliente: sesion.id_cliente || ''  // solo usuario cliente tiene valor.  
+      }
+      sessionStorage.setItem('userData', JSON.stringify(sesionUser));
+      sessionStorage.setItem('token', JSON.stringify(data.body));
+      
+      if (roluser === 0 || roluser === '') {
+        mensaje.textContent = 'Usuario NO valido, Verifiquelo con el Administrador.';
+        mensaje.className = 'mensaje-error'
+        return;
+      }
+  
+      if (roluser === 'ADMIN' || roluser === 'AGENTE') {
+        //mensaje.textContent = 'contraseña correcta'                                    
+        window.location.href = 'principalAdmin.html'
+      }
+  
+      if (roluser === 'CLIENTE') {
+        window.location.href = 'principalUser.html'
+      }
+      
+      })
+      .catch(error => {
+        console.log('Error al obtener los datos de la API:', error);
+      });
+  
+  }

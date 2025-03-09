@@ -116,7 +116,8 @@ formulario.addEventListener('click', async function(e) {
     e.preventDefault()
  */ 
   async  function getMovs() {     
-    const url = 'http://localhost:4000/api/Movimientos/todosMovimientos'; 
+    const url = 'http://srv743626.hstgr.cloud:4001/api/Movimientos/todosMovimientos'; 
+
     /* 
     const fechaIni  = document.querySelector('#fechaIni').value    
     const fechaFin  = document.querySelector('#fechaFin').value

@@ -89,7 +89,7 @@ function loadDataFromApi() {
     }
 
     console.log("postData", postData)
-    fetch('http://localhost:4000/api/clientes/todosagente', {
+    fetch('http://srv743626.hstgr.cloud:4000/api/clientes/todosagente', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', // Tipo de contenido
@@ -123,7 +123,7 @@ function AgregarCliente() {
     console.log("postData", postData)
     // Realizamos la solicitud POST
 
-    fetch('http://localhost:4000/api/Clientes', {
+    fetch('http://srv743626.hstgr.cloud:4000/api/Clientes', {
         method: 'POST', // Método HTTP
         headers: {
             'Content-Type': 'application/json', // Tipo de contenido
@@ -169,7 +169,7 @@ function ConfirmarBaja(estatus,idCliente) {
             estatus: estatus
         };
 
-        fetch('http://localhost:4000/api/clientes', {
+        fetch('http://srv743626.hstgr.cloud:4000/api/clientes', {
             method: 'PUT', // Método HTTP
             headers: {
                 'Content-Type': 'application/json',
@@ -230,4 +230,4 @@ $(function () {
                 form.classList.add('was-validated')
             }, false)
         })
-})
+}) 

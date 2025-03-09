@@ -115,7 +115,7 @@ function loadDataFromApi() {
         estatus: $("#TipoEstatus").val()
     }
 
-    fetch('http://localhost:4000/api/movimientos/todosMovimientos', {
+    fetch('http://srv743626.hstgr.cloud:4000/api/movimientos/todosMovimientos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', // Tipo de contenido
@@ -177,7 +177,7 @@ function AgregarMovimiento() {
     console.log("postData", postData)
     // Realizamos la solicitud POST
 
-    fetch('http://localhost:4000/api/movimientos', {
+    fetch('http://srv743626.hstgr.cloud:4000/api/movimientos', {
         method: 'POST', // Método HTTP
         headers: {
             'Content-Type': 'application/json', // Tipo de contenido
@@ -252,7 +252,7 @@ document.getElementById('nombre_cliente').addEventListener('input', function () 
 
 function fetchSuggestions(query) {
     // Asegúrate de reemplazar esta URL con la URL de tu API de autocompletado
-    const url = `http://localhost:4000/api/clientes/autocomplete?query=${query}&id_agente=${usuarioObj.id}&roluser=${usuarioObj.roluser}`;
+    const url = `http://srv743626.hstgr.cloud:4000/api/clientes/autocomplete?query=${query}&id_agente=${usuarioObj.id}&roluser=${usuarioObj.roluser}`;
 
     fetch(url)
         .then(response => response.json())
@@ -338,7 +338,7 @@ function ConfirmarBaja(estatus, idmovimiento) {
             estatus: estatus
         };
 
-        fetch('http://localhost:4000/api/movimientos', {
+        fetch('http://srv743626.hstgr.cloud:4000/api/movimientos', {
             method: 'PUT', // Método HTTP
             headers: {
                 'Content-Type': 'application/json',
@@ -432,7 +432,7 @@ async function gethit() {
 
   async function getNumHit (query) {
 
-   const url = `http://localhost:4000/api/movimientos/hit/`;
+   const url = `http://srv743626.hstgr.cloud:4000/api/movimientos/hit/`;
    return fetch(url, 
         {
             method: 'POST', // Método HTTP 
